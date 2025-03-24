@@ -47,11 +47,11 @@ class ComunaController extends Controller
         $comuna->muni_codi = $request->code;
         $comuna->save();
 
-        $comuna = DB::table('tb_comuna')
+        $comunas = DB::table('tb_comuna')
             ->join('tb_municipio', 'tb_comuna.muni_codi', '=', 'tb_municipio.muni_codi')
             ->select('tb_comuna.*', 'tb_municipio.muni_nomb')
             ->get();
-        return view('comuna.index', ['comunas' => $comuna]);
+        return view('comuna.index', ['comunas' => $comunas]);
     }
 
     /**
@@ -64,18 +64,36 @@ class ComunaController extends Controller
 
     /**
      * Show the form for editing the specified resource.
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
     public function edit(string $id)
     {
-        //
+        $comuna = Comuna::find($id);
+        $municipios = DB::table('tb_municipio')
+            ->orderBy('muni_nomb')
+            ->get();
+        return view('comuna.edit', ['comuna' => $comuna, 'municipios' => $municipios]);
     }
 
     /**
      * Update the specified resource in storage.
+     * @param int $id
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, string $id)
     {
-        //
+        $comuna = Comuna::find($id);
+        $comuna->comu_nomb = $request->name;
+        $comuna->muni_codi = $request->municipality;
+        $comuna->save();
+
+        $comunas = DB::table('tb_comuna')
+            ->join('tb_municipio', 'tb_comuna.muni_codi', '=', 'tb_municipio.muni_codi')
+            ->select('tb_comuna.*', 'tb_municipio.muni_nomb')
+            ->get();
+        return view('comuna.index', ['comunas' => $comunas]);
     }
 
     /**
