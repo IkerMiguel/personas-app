@@ -11,9 +11,7 @@
 <body>
     <div class="container">
         <h1>Municipality list</h1>
-        <!-- Botón de añadir -->
-        <a href="" class="btn btn-success">Add</a>
-
+        <a href="{{route('municipios.create')}}" class="btn btn-success">Add</a>
         <table class="table">
             <thead>
                 <tr>
