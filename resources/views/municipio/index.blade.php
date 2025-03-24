@@ -27,7 +27,13 @@
                     <th scope="row">{{ $municipio->muni_codi }}</th>
                     <td>{{ $municipio->muni_nomb }}</td>
                     <td>{{ $municipio->depa_nomb }}</td>
-                    <td>Actions</td>
+                    <td>
+                        <form action="{{ route('municipios.destroy', $municipio->muni_codi) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

@@ -79,9 +79,14 @@ class MunicipioController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
     public function destroy(string $id)
     {
-        //
+        $municipio = Municipio::find($id);
+        $municipio->delete();
+
+        return redirect()->route('municipios.index');
     }
 }
