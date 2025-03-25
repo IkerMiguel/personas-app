@@ -11,9 +11,7 @@
 <body>
     <div class="container">
         <h1>country list</h1>
-        <!--Boton para crear pais-->
-        <a href="" class="btn btn-success">Add</a>
-        <!--Boton para crear pais-->
+        <a href="{{route('paises.create')}}" class="btn btn-success">Add</a>
         <table class="table">
             <thead>
                 <tr>
