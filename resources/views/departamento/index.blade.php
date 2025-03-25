@@ -11,9 +11,7 @@
 <body>
     <div class="container">
         <h1>Department list</h1>
-        <!-- Boton crear -->
-        <a href="" class="btn btn-success">Add</a>
-        <!-- Boton crear -->
+        <a href="{{route('departamentos.create')}}" class="btn btn-success">Add</a>
         <table class="table">
             <thead>
                 <tr>
